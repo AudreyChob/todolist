@@ -12,6 +12,9 @@ export class HomePage {
   myTask ='';
   addTask: boolean;
   tasks= [];
+  checkedBox = false;
+  deleteAll= false;
+  selectedItems = [];
 
   constructor(
     public afDB: AngularFireDatabase,
@@ -58,13 +61,38 @@ changeCheckState(ev: any){
       liste.splice(i, 0, this.tasks[i])
     }
   }
-  console.debug("liste" + JSON.stringify(liste));
-  console.debug('checked: ' + ev.checked);
+  this.selectedItems=liste
+  console.debug("liste" + JSON.stringify(this.selectedItems));
+  // console.debug('checked: ' + ev.checked);
   this.afDB.object('Tasks/' +ev.key + '/checked/').set(ev.checked);
 }
 
 deleteTask(task: any) {
-	this.afDB.list('Tasks/').remove(task.key);
+	// this.afDB.list('Tasks/').remove(task.key);
+  console.debug(this.selectedItems.length)
+  for (let i=0; i<this.selectedItems.length; i++){
+  this.afDB.list('Tasks/').remove(this.selectedItems[i].key);
+  console.debug(this.selectedItems[i]);
+  }
+}
+
+selectAll(){
+  for(let i=0; i< this.tasks.length; i++){
+    this.tasks[i].checked = !this.tasks[i].checked;
+    console.debug(this.deleteAll)
+    if(this.tasks[i].checked === true){
+      // this.deleteAll = true;
+      this.selectedItems.splice(i, 0, this.tasks[i])
+      console.debug("deleteAll" + this.deleteAll);
+      if(this.selectedItems.length === this.tasks){
+        this.deleteAll = true
+      }
+    }
+    // else {
+    //   this.deleteAll = false;
+    // }
+
+  }
 }
 
 
