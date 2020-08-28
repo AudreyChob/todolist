@@ -7,7 +7,7 @@
       <ion-button (click)="getTasks()">
         <ion-icon name="refresh" slot="icon-only"></ion-icon>
       </ion-button>
-      <ion-checkbox  (click)="selectAll()"></ion-checkbox>
+        <ion-checkbox  checked="allSelected"(click)="selectAll()"></ion-checkbox>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -21,6 +21,7 @@
   <div class="bg-img">
     <h1><b>Aujourd'hui</b></h1>
     <h5>{{ currentDate }}</h5>
+
 
     <!-- <ion-card>
       <ion-item lines="none">
@@ -52,15 +53,14 @@
 
 
     <ion-card *ngFor="let task of tasks">
-
         <ion-item lines="none">
-          <ion-checkbox (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
+          <ion-checkbox (click)="displayTrashBtn()" (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
           <ion-label>
             <h2 *ngIf="!task.checked">{{ task.text }}</h2>
             <h2 *ngIf="task.checked" style="text-decoration:line-through;">{{ task.text }}</h2>
             <p>{{ task.hour }}</p>
           </ion-label>
-          <ion-button color="danger" (click)="deleteTask(task)">
+          <ion-button *ngIf="task.checked"  color="danger" (click)="deleteTask(task)">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-button>
         </ion-item>

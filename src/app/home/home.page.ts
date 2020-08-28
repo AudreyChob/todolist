@@ -14,6 +14,7 @@ export class HomePage {
   tasks= [];
   checkedBox = false;
   deleteAll= false;
+  allSelected = false;
   selectedItems = [];
 
   constructor(
@@ -51,6 +52,7 @@ getTasks(){
       });
     });
   });
+
 }
 
 changeCheckState(ev: any){
@@ -65,6 +67,12 @@ changeCheckState(ev: any){
   console.debug("liste" + JSON.stringify(this.selectedItems));
   // console.debug('checked: ' + ev.checked);
   this.afDB.object('Tasks/' +ev.key + '/checked/').set(ev.checked);
+      if(this.selectedItems.length >1){
+        this.deleteAll = true
+      }
+      else{
+        this.deleteAll = false;
+      }
 }
 
 deleteTask(task: any) {
@@ -81,17 +89,26 @@ selectAll(){
     this.tasks[i].checked = !this.tasks[i].checked;
     console.debug(this.deleteAll)
     if(this.tasks[i].checked === true){
-      // this.deleteAll = true;
-      this.selectedItems.splice(i, 0, this.tasks[i])
-      console.debug("deleteAll" + this.deleteAll);
-      if(this.selectedItems.length === this.tasks){
-        this.deleteAll = true
-      }
+          this.selectedItems.splice(i, 0, this.tasks[i])
+     }
+    if(this.selectedItems.length === this.tasks.length){
+      this.allSelected = true;
     }
-    // else {
-    //   this.deleteAll = false;
-    // }
+    else{
+      this.allSelected = false;
+    }
+  }
 
+
+
+  console.debug("this.selectedItems.length : " + this.selectedItems.length )
+  console.debug("this.selectedItems.length : " + this.tasks.length )
+
+}
+
+displayTrashBtn(){
+  if(this.selectedItems.length >1){
+    this.deleteAll = true
   }
 }
 
