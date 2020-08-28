@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 export const firebaseConfig = {
   apiKey: "AIzaSyBf7NCpAa8bXiZOAIni3nLNadngxxIED1s",
   authDomain: "todolist-bbcb5b.firebaseapp.com",
@@ -30,6 +32,7 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,
