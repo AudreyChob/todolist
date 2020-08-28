@@ -51,6 +51,14 @@ getTasks(){
 }
 
 changeCheckState(ev: any){
+  console.debug(this.tasks.length)
+  var liste = [];
+  for (let i=0; i < this.tasks.length; i++){
+    if(this.tasks[i].checked === true){
+      liste.splice(i, 0, this.tasks[i])
+    }
+  }
+  console.debug("liste" + JSON.stringify(liste));
   console.debug('checked: ' + ev.checked);
   this.afDB.object('Tasks/' +ev.key + '/checked/').set(ev.checked);
 }
