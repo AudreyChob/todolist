@@ -52,7 +52,7 @@ h5{
 
 .add-button{
   --background: #383a3e;
-  position: absolute;
+  position: static;
   bottom: 5px;
   width: 96%;
   --color: #ffffff;
@@ -60,7 +60,7 @@ h5{
 }
 .trash-button{
   --background: #eb445a;
-  position: absolute;
+  position: static;
   bottom: 50px;
   width: 96%;
   --color: #ffffff;

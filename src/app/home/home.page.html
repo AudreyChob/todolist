@@ -7,7 +7,7 @@
       <ion-button (click)="getTasks()">
         <ion-icon name="refresh" slot="icon-only"></ion-icon>
       </ion-button>
-        <ion-checkbox  checked="allSelected"(click)="selectAll()"></ion-checkbox>
+        <ion-checkbox  (click)="selectAll()"></ion-checkbox>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -51,7 +51,6 @@
       Supprimer tous
     </ion-button>
 
-
     <ion-card *ngFor="let task of tasks">
         <ion-item lines="none">
           <ion-checkbox (click)="displayTrashBtn()" (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
@@ -65,6 +64,7 @@
           </ion-button>
         </ion-item>
     </ion-card>
+
 
   </div>
 

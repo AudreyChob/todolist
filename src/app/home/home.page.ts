@@ -14,7 +14,7 @@ export class HomePage {
   tasks= [];
   checkedBox = false;
   deleteAll= false;
-  allSelected = false;
+  allSelected :boolean;
   selectedItems = [];
 
   constructor(
@@ -44,6 +44,8 @@ getTasks(){
   this.afDB.list('Tasks/').snapshotChanges(['child_added', 'child_removed']).subscribe(action => {
     this.tasks = [];
     action.forEach(action => {
+      // console.log("heurer : "+ action.payload.exportVal().date.substring(11,16)),
+
       this.tasks.push({
         key: action.key,
         text: action.payload.exportVal().text,
@@ -91,12 +93,6 @@ selectAll(){
     if(this.tasks[i].checked === true){
           this.selectedItems.splice(i, 0, this.tasks[i])
      }
-    if(this.selectedItems.length === this.tasks.length){
-      this.allSelected = true;
-    }
-    else{
-      this.allSelected = false;
-    }
   }
 
 
