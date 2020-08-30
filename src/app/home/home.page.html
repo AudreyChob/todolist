@@ -53,7 +53,7 @@
 
     <ion-card *ngFor="let task of tasks">
         <ion-item lines="none">
-          <ion-checkbox (click)="displayTrashBtn()" (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
+          <ion-checkbox (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
           <ion-label>
             <h2 *ngIf="!task.checked">{{ task.text }}</h2>
             <h2 *ngIf="task.checked" style="text-decoration:line-through;">{{ task.text }}</h2>

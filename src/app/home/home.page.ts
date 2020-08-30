@@ -79,11 +79,11 @@ changeCheckState(ev: any){
 
 deleteTask(task: any) {
 	// this.afDB.list('Tasks/').remove(task.key);
-  console.debug(this.selectedItems.length)
-  for (let i=0; i<this.selectedItems.length; i++){
-  this.afDB.list('Tasks/').remove(this.selectedItems[i].key);
-  console.debug(this.selectedItems[i]);
-  }
+   for (let i=0; i<this.selectedItems.length; i++){
+     task = this.selectedItems[i];
+     this.afDB.list('Tasks/').remove(task.key);
+   console.debug("this.selectedItem" + this.selectedItems[i]);
+   }
 }
 
 selectAll(){
