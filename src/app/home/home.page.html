@@ -29,7 +29,7 @@
       </ion-item>
     </ion-card> -->
     <ion-card id="addItem"  >
-      <ion-item  color="success" *ngIf="addTask"  lines="none">
+      <ion-item  *ngIf="addTask"  lines="none">
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
         <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
           <ion-icon slot="icon-only" name="add"></ion-icon>
