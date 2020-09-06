@@ -37,7 +37,7 @@
       </ion-item>
       <ion-item *ngIf="addTask"  lines="none">
         <ion-datetime [(ngModel)]="dateToDo" placeholder="Date?" display-timezone="utc"></ion-datetime>
-        <ion-datetime displayFormat="HH:mm"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm a" display-timezone="utc"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
         <!-- <ion-input class="goalToDo" type="date" [(ngModel)]="dateToDo"></ion-input> -->
       <!-- </ion-item>
       <ion-item *ngIf="addTask"  lines="none"> -->

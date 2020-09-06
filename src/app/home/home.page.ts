@@ -56,7 +56,7 @@ getTasks(){
         hour: action.payload.exportVal().date.substring(11,16),
         checked: action.payload.exportVal().checked,
         dateToDo: action.payload.exportVal().dateToDo,
-        timeToDo: action.payload.exportVal().timeToDo,
+        timeToDo: action.payload.exportVal().timeToDo.substring(11,16),
       });
     });
   });
