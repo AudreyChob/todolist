@@ -16,6 +16,8 @@ export class HomePage {
   deleteAll= false;
   allSelected :boolean;
   selectedItems = [];
+  dateToDo = new Date;
+  timeToDo = "";
 
   constructor(
     public afDB: AngularFireDatabase,
@@ -30,7 +32,9 @@ export class HomePage {
     this.afDB.list('Tasks/').push({
       text: this.myTask,
       date: new Date().toISOString(),
-      checked: false
+      checked: false,
+      dateToDo: this.dateToDo,
+      timeToDo: this.timeToDo,
     });
     this.showForm();
   }
@@ -50,7 +54,9 @@ getTasks(){
         key: action.key,
         text: action.payload.exportVal().text,
         hour: action.payload.exportVal().date.substring(11,16),
-        checked: action.payload.exportVal().checked
+        checked: action.payload.exportVal().checked,
+        dateToDo: action.payload.exportVal().dateToDo,
+        timeToDo: action.payload.exportVal().timeToDo,
       });
     });
   });
@@ -77,13 +83,18 @@ changeCheckState(ev: any){
       }
 }
 
-deleteTask(task: any) {
+deleteMultipleTask(task: any) {
 	// this.afDB.list('Tasks/').remove(task.key);
    for (let i=0; i<this.selectedItems.length; i++){
      task = this.selectedItems[i];
      this.afDB.list('Tasks/').remove(task.key);
-   console.debug("this.selectedItem" + this.selectedItems[i]);
+   console.debug("this.selectedItem" + this.selectedItems[i].key);
    }
+   this.deleteAll = false;
+}
+
+deleteTask(task: any) {
+	this.afDB.list('Tasks/').remove(task.key);
 }
 
 selectAll(){

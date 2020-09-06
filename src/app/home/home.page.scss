@@ -69,3 +69,15 @@ h5{
 ion-checkbox{
   --border-radius: 50%;
 }
+ion-card{
+  display: flex;
+  flex-direction: row;
+}
+ion-item{
+  width: 90%
+}
+
+#addItem{
+  display: flex;
+  flex-direction: column;
+}

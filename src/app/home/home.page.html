@@ -28,9 +28,13 @@
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
       </ion-item>
     </ion-card> -->
-    <ion-card>
-      <ion-item *ngIf="addTask"  lines="none">
+    <ion-card id="addItem">
+      <ion-item  *ngIf="addTask"  lines="none">
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="addTask"  lines="none">
+        Date <ion-input type="date" placeholder='JJ/MM/AAAA'[(ngModel)]="dateToDo"></ion-input>
+        Heure <ion-input type="time"  placeholder="HH:MM"[(ngModel)]="timeToDo"></ion-input>
         <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
           <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>
@@ -46,23 +50,24 @@
       <ion-icon name="close" slot="start"></ion-icon>
       Annuler
     </ion-button>
-    <ion-button *ngIf="deleteAll"   (click)="deleteTask(tasks)"  expand="block" class="trash-button">
+    <ion-button *ngIf="deleteAll"   (click)="deleteMultipleTask(tasks)"  expand="block" class="trash-button">
       <ion-icon name="trash" slot="start"></ion-icon>
       Supprimer tous
     </ion-button>
 
-    <ion-card *ngFor="let task of tasks">
-        <ion-item lines="none">
+    <ion-card *ngFor="let task of tasks" >
+        <ion-item lines="none" >
           <ion-checkbox (ionChange)="changeCheckState(task)" color="success" [(ngModel)]="task.checked" slot="start" checked="checkedBox"></ion-checkbox>
-          <ion-label>
+          <ion-label >
             <h2 *ngIf="!task.checked">{{ task.text }}</h2>
             <h2 *ngIf="task.checked" style="text-decoration:line-through;">{{ task.text }}</h2>
-            <p>{{ task.hour }}</p>
+            <p> Le : {{ task.dateToDo }},
+            à : {{task.timeToDo}}</p>
           </ion-label>
-          <ion-button *ngIf="task.checked"  color="danger" (click)="deleteTask(task)">
+        </ion-item>
+          <ion-button  id="btnDelete" *ngIf="task.checked"  color="danger" (click)="deleteTask(task)">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-button>
-        </ion-item>
     </ion-card>
 
 
