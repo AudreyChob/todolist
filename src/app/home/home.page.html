@@ -1,33 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="dark">
     <ion-title>
-      Tuto Driss As Todolist
+      Todolist
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="getTasks()">
         <ion-icon name="refresh" slot="icon-only"></ion-icon>
       </ion-button>
-        <ion-checkbox  (click)="selectAll()"></ion-checkbox>
+        <ion-checkbox color="success" (click)="selectAll()"></ion-checkbox>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
   <div class="bg-img">
-    <h1><b>Aujourd'hui</b></h1>
-    <h5>{{ currentDate }}</h5>
+    <h1 style="color: #c8834c"><b>Aujourd'hui</b></h1>
+    <h5 style="color: #c8834c">{{ currentDate }}</h5>
 
-
-    <!-- <ion-card>
-      <ion-item lines="none">
-        <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
-      </ion-item>
-    </ion-card> -->
     <ion-card id="addItem"  >
       <ion-item  *ngIf="addTask"  lines="none">
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
@@ -37,11 +26,7 @@
       </ion-item>
       <ion-item *ngIf="addTask"  lines="none">
         <ion-datetime [(ngModel)]="dateToDo" placeholder="Date?" display-timezone="utc"></ion-datetime>
-        <ion-datetime displayFormat="HH:mm a" display-timezone="utc"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
-        <!-- <ion-input class="goalToDo" type="date" [(ngModel)]="dateToDo"></ion-input> -->
-      <!-- </ion-item>
-      <ion-item *ngIf="addTask"  lines="none"> -->
-        <!-- <ion-input class="goalToDo" type="time" [(ngModel)]="timeToDo"></ion-input> -->
+        <ion-datetime displayFormat="HH:mm a" minuteValues="0,15,30,45" display-timezone="utc"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
       </ion-item>
     </ion-card>
 
@@ -66,21 +51,13 @@
             <h2 *ngIf="!task.checked">{{ task.text }}</h2>
             <h2 *ngIf="task.checked" style="text-decoration:line-through;">{{ task.text }}</h2>
             <p> A faire le : {{ task.dateToDo }},
-            à : {{task.timeToDo}}</p>
+                à : {{task.timeToDo}}
+           </p>
           </ion-label>
         </ion-item>
           <ion-button  id="btnDelete" *ngIf="task.checked"  color="danger" (click)="deleteTask(task)">
             <ion-icon name="trash" slot="icon-only"></ion-icon>
           </ion-button>
     </ion-card>
-
-
   </div>
-
-
-
-  <!-- <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div> -->
 </ion-content>

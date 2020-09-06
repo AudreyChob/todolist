@@ -24,12 +24,15 @@
 #container a {
   text-decoration: none;
 }
-
+h1{
+  color: #d27c97
+}
 .bg-img{
   padding: 1px;
   height: 100%;
   width: 100%;
-  background-image : url('../../assets/chill.jpg');
+  // margin-right: 20%;
+  background-image : url('../../assets/fleurs.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
