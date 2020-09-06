@@ -28,18 +28,20 @@
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
       </ion-item>
     </ion-card> -->
-    <ion-card id="addItem">
-      <ion-item  *ngIf="addTask"  lines="none">
+    <ion-card id="addItem"  >
+      <ion-item  color="success" *ngIf="addTask"  lines="none">
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
         <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
           <ion-icon slot="icon-only" name="add"></ion-icon>
         </ion-button>
       </ion-item>
       <ion-item *ngIf="addTask"  lines="none">
-        <ion-input class="goalToDo" type="date" [(ngModel)]="dateToDo"></ion-input>
+        <ion-datetime [(ngModel)]="dateToDo" placeholder="Date?" display-timezone="utc"></ion-datetime>
+        <ion-datetime displayFormat="HH:mm"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
+        <!-- <ion-input class="goalToDo" type="date" [(ngModel)]="dateToDo"></ion-input> -->
       <!-- </ion-item>
       <ion-item *ngIf="addTask"  lines="none"> -->
-        <ion-input class="goalToDo" type="time" [(ngModel)]="timeToDo"></ion-input>
+        <!-- <ion-input class="goalToDo" type="time" [(ngModel)]="timeToDo"></ion-input> -->
       </ion-item>
     </ion-card>
 
