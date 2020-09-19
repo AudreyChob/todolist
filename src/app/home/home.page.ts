@@ -46,14 +46,13 @@ showForm() {
 
 getTasks(){
   this.afDB.list('Tasks/').snapshotChanges(['child_added', 'child_removed']).subscribe(action => {
-    this.tasks = [];
     action.forEach(action => {
-      // console.log("heurer : "+ action.payload.exportVal().date.substring(11,16)),
+      //console.log("heurer : "+ action.payload.exportVal().date.substring(11,16)),
 
       this.tasks.push({
         key: action.key,
         text: action.payload.exportVal().text,
-        hour: action.payload.exportVal().date.substring(11,16),
+        //hour: action.payload.exportVal().date.substring(11,16),
         checked: action.payload.exportVal().checked,
         dateToDo: action.payload.exportVal().dateToDo,
         timeToDo: action.payload.exportVal().timeToDo.substring(11,16),

@@ -20,13 +20,13 @@
     <ion-card id="addItem"  >
       <ion-item  *ngIf="addTask"  lines="none">
         <ion-input [(ngModel)]="myTask" placeholder="Entrer une tâche"></ion-input>
-        <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
       </ion-item>
       <ion-item *ngIf="addTask"  lines="none">
         <ion-datetime [(ngModel)]="dateToDo" placeholder="Date?" display-timezone="utc"></ion-datetime>
         <ion-datetime displayFormat="HH:mm a" minuteValues="0,15,30,45" display-timezone="utc"  [(ngModel)]="timeToDo" placeholder="Heure ?"></ion-datetime>
+        <ion-button (click)="addTaskToFirebase()" shape="round" slot="end">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
       </ion-item>
     </ion-card>
 
