@@ -3,10 +3,13 @@
     <ion-title>
       Todolist
     </ion-title>
+    <ion-button [routerLink]="['/']" slot="start">
+       <ion-icon name="return-down-back-outline"></ion-icon>
+    </ion-button>
     <ion-buttons slot="end">
-      <ion-button (click)="getTasks()">
+      <!-- <ion-button (click)="getTasks()">
         <ion-icon name="refresh" slot="icon-only"></ion-icon>
-      </ion-button>
+      </ion-button> -->
         <ion-checkbox color="success" (click)="selectAll()"></ion-checkbox>
     </ion-buttons>
   </ion-toolbar>

@@ -120,4 +120,5 @@ export class CoursesPage implements OnInit{
     }
   }
 
+
 }
