@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Appli</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="menu">
+    <ion-card *ngFor="let m of menu">
+      <a href={{m.path}}>
+        <ion-item>
+          <img src={{m.icon}}>
+        </ion-item>
+        <ion-item>
+          {{m.nom}}
+        </ion-item>
+      </a>
+    </ion-card>
+
+  </div>
+</ion-content>

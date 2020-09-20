@@ -47,8 +47,6 @@ showForm() {
 getTasks(){
   this.afDB.list('Tasks/').snapshotChanges(['child_added', 'child_removed']).subscribe(action => {
     action.forEach(action => {
-      //console.log("heurer : "+ action.payload.exportVal().date.substring(11,16)),
-
       this.tasks.push({
         key: action.key,
         text: action.payload.exportVal().text,
@@ -57,9 +55,9 @@ getTasks(){
         dateToDo: action.payload.exportVal().dateToDo,
         timeToDo: action.payload.exportVal().timeToDo.substring(11,16),
       });
+      console.debug(JSON.stringify(this.tasks))
     });
   });
-
 }
 
 changeCheckState(ev: any){

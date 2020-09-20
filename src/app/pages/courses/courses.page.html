@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Courses</ion-title>
+    <ion-button (click)="getListe()">
+      <ion-icon name="refresh" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card id="addListe">
+    <ion-item *ngIf="addListe" lines="none">
+      <ion-input [(ngModel)]="article" placeholder="Ajouter à la liste">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="addListe" lines="none">
+        <ion-input type="number" min="0" max="10" [(ngModel)]="quantite" placeholder="Qte">
+        </ion-input>
+        <ion-select  [(ngModel)]="selectedType"  placeholder="Rayon" >
+          <ion-select-option *ngFor="let t of type" >
+            {{t}}
+          </ion-select-option>
+        </ion-select>
+        <ion-button (click)="addArticleToFireBase()" shape="round" slot="end">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+    </ion-item>
+  </ion-card>
+
+  <ion-button *ngIf="!addListe" (click)="showForm()" expand="block" class="add-button">
+    <ion-icon name="add" slot="start"></ion-icon>
+    Ajouter à la liste
+  </ion-button>
+
+  <ion-button *ngIf="addListe" (click)="showForm()" expand="block" class="add-button">
+    <ion-icon name="close" slot="start"></ion-icon>
+    Annuler
+  </ion-button>
+  <ion-button *ngIf="deleteAll"   (click)="deleteMultipleArticles(liste)"  expand="block" class="trash-button">
+    <ion-icon name="trash" slot="start"></ion-icon>
+    Supprimer tous
+  </ion-button>
+
+  <ion-card *ngFor="let l of liste"  >
+    <ion-item lines="none">
+      <ion-checkbox (ionChange)="changeCheckState(l)" color="success" [(ngModel)]="l.checked" slot="start" checked="checkedBox"></ion-checkbox>
+      <h2 *ngIf="!l.checked">{{l.quantite}} {{l.article}}</h2>
+      <h2 *ngIf="l.checked" style="text-decoration:line-through;">{{l.quantite}} {{l.article}}</h2>
+    </ion-item>
+    <ion-button id="btnDelete" *ngIf="l.checked"  color="danger" (click)="deleteArticle(l)">
+      <ion-icon name="trash" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-card>
+</ion-content>
