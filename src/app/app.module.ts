@@ -22,6 +22,9 @@ export const firebaseConfig = {
   messagingSenderId: "486632956520",
   appId: "1:486632956520:web:246e6856def6b2533d51dd"
 };
+// import { SpeechRecognition } from '@ionic-native/speech-recognition';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +40,8 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    // SpeechRecognition,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
 })

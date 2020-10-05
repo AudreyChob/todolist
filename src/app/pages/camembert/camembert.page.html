@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>camembert</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <google-chart [data]="pieChartData"></google-chart>
+
+  <ion-card>
+    <ion-card-header>
+      Bar Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id="barCanvas"></canvas>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

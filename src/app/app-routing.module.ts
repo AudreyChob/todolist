@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'courses',
     loadChildren: () => import('./pages/courses/courses.module').then( m => m.CoursesPageModule)
   },
+  {
+    path: 'rec',
+    loadChildren: () => import('./pages/rec/rec.module').then( m => m.RecPageModule)
+  },
+  {
+    path: 'camembert',
+    loadChildren: () => import('./pages/camembert/camembert.module').then( m => m.CamembertPageModule)
+  },
 
 ];
 

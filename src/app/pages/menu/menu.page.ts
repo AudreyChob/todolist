@@ -16,7 +16,17 @@ export class MenuPage implements OnInit {
       nom : "Todolist",
       path : 'todolist',
       icon : "../../assets/checklist.png"
-    }
+    },
+    {
+      nom : "REC",
+      path : 'rec',
+      icon : "../../assets/checklist.png"
+    },
+    {
+      nom : "Dashboard",
+      path : 'camembert',
+      icon : "../../assets/checklist.png"
+    },
 
 ]
 
