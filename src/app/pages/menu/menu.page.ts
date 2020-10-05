@@ -20,12 +20,12 @@ export class MenuPage implements OnInit {
     {
       nom : "REC",
       path : 'rec',
-      icon : "../../assets/checklist.png"
+      icon : "../../assets/rec.png"
     },
     {
-      nom : "Dashboard",
+      nom : "Chart",
       path : 'camembert',
-      icon : "../../assets/checklist.png"
+      icon : "../../assets/pie-chart.png"
     },
 
 ]

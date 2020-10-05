@@ -23,6 +23,8 @@ export const firebaseConfig = {
   appId: "1:486632956520:web:246e6856def6b2533d51dd"
 };
 // import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+
 
 
 
@@ -40,7 +42,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
-    // SpeechRecognition,
+    SpeechRecognition,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent]
